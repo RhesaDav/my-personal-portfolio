@@ -16,13 +16,9 @@ const Navbar = (props: Props) => {
     <nav className={`${props.className} animate-fade-in`}>
       <ul className="flex items-center justify-center gap-4">
         {navigation.map((item) => (
-          <li key={item.href} className="text-sm">
-            <Link href={item.href}>
-              <div className="duration-500 text-zinc-500 hover:text-zinc-300">
+            <Link key={item.href} href={item.href} className="duration-500 text-zinc-500 hover:text-zinc-300">
                 {item.name}
-              </div>
             </Link>
-          </li>
         ))}
       </ul>
     </nav>
