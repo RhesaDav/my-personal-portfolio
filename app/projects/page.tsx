@@ -1,15 +1,11 @@
 'use client'
-import Navbar from '@/component/Navbar';
-import React, { useEffect, useState } from 'react';
+import Navbar from '@/components/Navbar';
+import { motion } from 'framer-motion';
+import React, { Fragment, useEffect, useState } from 'react';
 import { SiReact, SiTailwindcss, SiRedux, SiPython, SiDjango, SiNextdotjs } from 'react-icons/si';
 
 const ProjectsPage: React.FC = () => {
-  const [animate, setAnimate] = useState(false);
   const [activeCategory, setActiveCategory] = useState('All');
-
-  useEffect(() => {
-    setAnimate(true);
-  }, []);
 
   const projects = [
     {
@@ -37,15 +33,34 @@ const ProjectsPage: React.FC = () => {
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     },
   ];
-  
 
   const filteredProjects =
     activeCategory === 'All' ? projects : projects.filter(project => project.category === activeCategory);
 
   return (
-    <div className={`flex flex-col items-center justify-center h-screen ${animate ? 'animate-fade-in' : ''}`}>
-      <h1 className="text-4xl font-bold mb-5">Projects Page</h1>
-      <Navbar className='mb-8'/>
+    <Fragment>
+
+    {/* <div className="flex flex-col items-center mt-10 h-screen animate-fade-in">
+      <div className="absolute top-0 right-0 m-4">
+        <Navbar />
+      </div>
+      <motion.button
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="absolute top-0 left-0 m-4 bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-600"
+      >
+        Back
+      </motion.button> */}
+
+      <motion.h1
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="text-4xl font-bold mb-5"
+      >
+        Projects Page
+      </motion.h1>
 
       <div className="flex justify-center mb-4">
         <button
@@ -82,27 +97,49 @@ const ProjectsPage: React.FC = () => {
         </button>
       </div>
 
-      <div className="flex flex-wrap justify-center">
+      <motion.div
+        // initial={{ opacity: 0, scale: 0.8 }}
+        // animate={{ opacity: 1, scale: 1 }}
+        // transition={{ duration: 0.5 }}
+        className="flex flex-wrap justify-center"
+      >
         {filteredProjects.map((project, index) => (
-          <div
+          <motion.div
             key={project.title}
-            className="bg-gray-500 cursor-pointer rounded-lg p-4 m-4 shadow-md transform transition-transform duration-500 hover:scale-110 hover:bg-gray-300"
+            initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: index*0.25 }}
+            className="bg-gray-500 cursor-pointer rounded-lg p-4 m-4 shadow-md hover:bg-gray-300"
           >
             <h2 className="text-lg font-semibold mb-2">{project.title}</h2>
             <p className="text-gray-700">{project.description}</p>
             <div className="mt-2">
-              <div className='flex'>
-              {project.techStack.map((Icon, techIndex) => (
-                <span key={techIndex} className="mr-2">
-                  {Icon}
-                </span>
-              ))}
+              <div className="flex">
+                {project.techStack.map((Icon, techIndex) => (
+                  <span key={techIndex} className="mr-2">
+                    {Icon}
+                  </span>
+                ))}
               </div>
             </div>
-          </div>
+            <motion.button
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.3 }}
+              variants={{
+                hover: { opacity: 1, scale: 1 },
+                hidden: { opacity: 0, scale: 0 },
+              }}
+              whileHover="hover"
+              className="bg-blue-500 text-white rounded-md px-4 py-2 mt-2 hover:bg-blue-600"
+            >
+              Detail
+            </motion.button>
+          </motion.div>
         ))}
-      </div>
-    </div>
+      </motion.div>
+    {/* </div> */}
+    </Fragment>
   );
 };
 
