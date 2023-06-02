@@ -21,7 +21,7 @@ const ContactPage: React.FC = () => {
             d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
           />
         </svg>
-        <span className="text-lg">Email: example@example.com</span>
+        <span className="text-lg">Email: rhesadav48@gmail.com</span>
       </div>
 
     <div className="flex gap-5">
@@ -29,7 +29,7 @@ const ContactPage: React.FC = () => {
       <div className="flex items-center">
         <SiGithub className="h-6 w-6 animate-pulse mr-2 text-gray-700" />
         <a
-          href="https://github.com/your-github-profile"
+          href="https://github.com/RhesaDav"
           target="_blank"
           rel="noopener noreferrer"
           className="text-lg"
@@ -41,7 +41,7 @@ const ContactPage: React.FC = () => {
       <div className="flex items-center">
         <SiLinkedin className="h-6 w-6 animate-pulse mr-2 text-blue-700" />
         <a
-          href="https://www.linkedin.com/in/your-linkedin-profile"
+          href="https://www.linkedin.com/in/rhesa-davinanto-9762501aa/"
           target="_blank"
           rel="noopener noreferrer"
           className="text-lg"
@@ -53,7 +53,7 @@ const ContactPage: React.FC = () => {
       <div className="flex items-center">
         <SiTwitter className="h-6 w-6 animate-pulse mr-2 text-blue-500" />
         <a
-          href="https://twitter.com/your-twitter-profile"
+          href="https://twitter.com/rhesadav"
           target="_blank"
           rel="noopener noreferrer"
           className="text-lg"
